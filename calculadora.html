@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .fundo{
+            background: #059b9a;
+            height: 100vh;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .calculudora{
+            position: absolute;
+            background-color: #e8373e;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 15px;
+            padding: 15px;
+        }
+        .botao{
+            width: 50px;
+            height: 50px;
+            font-size: 15px;
+            cursor: pointer;
+            background-color: rgb(31,31,31);
+            color: white;
+            border: none;
+        }
+        .botao:hover{
+            background-color: #349e97;
+        }
+        h1{
+            text-align: center;
+        }
+        #resultado{
+            background-color: white;
+            width: 207px;
+            height: 30px;
+            margin: 5px;
+            font-size: 25px;
+            color: black;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="fundo">
+    <h1>Diego Rodrigues</h1>
+    <div class="calculudora">
+        <h1>Calculadora</h1>
+        <p id="resultado"></p>
+        <table>
+            <tr>
+            <td> <button class="botao" onclick= "clean()">C</button></td>
+            <td> <button class="botao"onclick= "back()"><</button></td>
+            <td> <button class="botao" onclick= "inserte('/')">/</button></td>
+            <td> <button class="botao" onclick= "inserte('*')">x</button></td>
+        </tr>
+        <tr>
+            <td> <button class="botao" onclick= "inserte('7')">7</button></td>
+            <td> <button class="botao" onclick= "inserte('8')">8</button></td>
+            <td> <button class="botao" onclick= "inserte('9')">9</button></td>
+            <td> <button class="botao" onclick= "inserte('-')">-</button></td>
+        
+        </tr>
+            <tr>
+            <td> <button class="botao" onclick= "inserte('4')">4</button></td>
+            <td> <button class="botao" onclick= "inserte('5')">5</button></td>
+            <td> <button class="botao"onclick= "inserte('6')">6</button></td>
+            <td> <button class="botao" onclick= "inserte('+')">+</button></td>
+        </tr>
+        <tr>
+            <td> <button class="botao" onclick= "inserte('3')">3</button></td>
+            <td> <button class="botao" onclick= "inserte('2')">2</button></td>
+            <td> <button class="botao" onclick= "inserte('1')">1</button></td>
+            <td rowspan="2"> <button class="botao" style="height: 106px;" onclick= "calcular()">=</button></td>
+        </tr>
+        <tr>
+            <td colspan="2"> <button class="botao" style="width: 106px;"onclick= "inserte('0')">0</button></td>
+            <td> <button class="botao" onclick= "inserte('.')">.</button></td>
+        </tr>
+        </table>
+    </div>
+    </div>
+    <script>
+            function inserte(num)
+            {
+              var numero= document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = numero +num;
+            }
+            function clean()
+            {
+                document.getElementById('resultado').innerHTML="";
+            }
+            function back()
+            {
+              var resultado=  document.getElementById('resultado').innerHTML;
+              document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
+            }
+            function calcular()
+            {
+                var resultado=  document.getElementById('resultado').innerHTML;
+                if(resultado){
+                    document.getElementById('resultado').innerHTML= eval(resultado);
+                }
+                else{
+                    document.getElementById('resultado').innerHTML= 'nada'
+
+                }
+            }
+    </script>
+</body>
+</html>
